@@ -33,7 +33,7 @@ namespace DevIO.App.Controllers
 
         public async Task<IActionResult> Details(Guid id)
         {
-            var produtoViewModel = _produtoRepository.ObterPorId(id);
+            var produtoViewModel =await ObterProduto(id);
 
             if (produtoViewModel == null)
                 return NotFound();
@@ -117,7 +117,7 @@ namespace DevIO.App.Controllers
 
         public async Task<IActionResult> Delete(Guid id)
         {
-            var produto = ObterProduto(id);
+            var produto = await ObterProduto(id);
 
             if (produto == null)
                 return NotFound();
@@ -129,7 +129,7 @@ namespace DevIO.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var produto = ObterProduto(id);
+            var produto = await ObterProduto(id);
 
             if (produto == null)
                 return NotFound();
